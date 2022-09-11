@@ -1,6 +1,5 @@
 import React from "react";
 import registerImage from "../../assests/register.jpg";
-import registerStyles from "../register/registerstyles.module.scss";
 
 const Register = () => {
   return (
