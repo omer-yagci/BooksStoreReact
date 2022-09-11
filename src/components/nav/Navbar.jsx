@@ -10,13 +10,17 @@ const Navbar = () => {
           <Link to="/" className="navbar-brand text-white">
             <h4>BookStoreApp</h4>
           </Link>
+
           <div className="d-flex  align-items-center ">
             <>
-              <button className="ms-2 ">
+              <button className=" btns ms-2 ">
                 <NavLink to="/login">Login</NavLink>
               </button>
-              <button className="ms-2 ">
+              <button className="btns ms-2 ">
                 <NavLink to="/register">Register</NavLink>
+              </button>
+              <button className="btns ms-2 ">
+                <NavLink to="/contact">Contact Me</NavLink>
               </button>
             </>
           </div>

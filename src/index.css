@@ -1,9 +1,29 @@
 * {
   font-family: "Literata", serif;
 }
+
+/* NAVBAR COMPONENT START */
 .navbar {
   background-color: #774026;
 }
+
+.btns {
+  padding: 0.3rem;
+  border-radius: 1rem;
+}
+.btns:hover {
+  transform: scale(0.99);
+}
+.btns a {
+  color: brown;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+}
+.btns a:hover {
+  color: black;
+}
+/* NAVBAR COMPONENT END */
 
 /*REGİSTER PAGE START */
 .parent {
@@ -48,7 +68,6 @@
 .btn:hover {
   transform: scale(0.99);
 }
-/*REGİSTER PAGE END */
 @media screen and (min-width: 1920px) {
   .register-image,
   .register-form {
@@ -61,3 +80,4 @@
     flex-direction: column;
   }
 }
+/*REGİSTER PAGE END */
