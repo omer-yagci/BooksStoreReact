@@ -1,0 +1,21 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  .col {
+    .leftside,
+    .rigthside {
+      height: 100vh;
+      width: 100%;
+    }
+    .leftside {
+      background-color: palegreen;
+      .registerStyles {
+        width: 55vw;
+      }
+    }
+    .rigthside {
+      background-color: blue;
+    }
+  }
+}
