@@ -3,16 +3,28 @@ import registerImage from "../../assests/registerImage.jpg";
 import bookIcon from "../../assests/booksIconpng.png";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { signIn } from "../../auth/firebase";
+import { signIn, signUpProvider } from "../../auth/firebase";
+
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
+  // !States
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
+  // !Login Handler
+
   const handleLogin = (e) => {
     e.preventDefault();
     signIn(email, password, navigate);
+  };
+
+  // !Google handler
+
+  const googleHandlerProvider = () => {
+    signUpProvider(navigate);
   };
   return (
     <section className="vh-100">
@@ -57,7 +69,7 @@ const Login = () => {
                 </div>
                 <div className="pt-1 mb-4">
                   <button
-                    className="btn btn-info btn-lg btn-block"
+                    className="btn btn-secondary btn-lg btn-block"
                     type="submit"
                   >
                     Login
@@ -74,7 +86,10 @@ const Login = () => {
                     Register here
                   </Link>
                 </p>
-                <button>Continie with Google</button>
+                <button className="google-btn" onClick={googleHandlerProvider}>
+                  <FcGoogle className="google-icon"></FcGoogle>
+                  Continue with Google
+                </button>
               </form>
             </div>
           </div>
