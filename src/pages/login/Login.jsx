@@ -3,7 +3,7 @@ import registerImage from "../../assests/registerImage.jpg";
 import bookIcon from "../../assests/booksIconpng.png";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { signIn, signUpProvider } from "../../auth/firebase";
+import { signIn, signUpProvider, forgotPassword } from "../../auth/firebase";
 
 import { FcGoogle } from "react-icons/fc";
 
@@ -76,7 +76,11 @@ const Login = () => {
                   </button>
                 </div>
                 <p className="small mb-2 pb-lg-2">
-                  <a className="text-muted" href="#!">
+                  <a
+                    className="text-muted"
+                    href="#!"
+                    onClick={() => forgotPassword(email)}
+                  >
                     Forgot password?
                   </a>
                 </p>
