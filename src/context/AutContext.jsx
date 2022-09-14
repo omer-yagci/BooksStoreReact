@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { userObserver } from "../auth/firebase";
 
 // ! Defining context
 export const BooksContext = createContext();
@@ -9,7 +10,13 @@ export const UseBooksContext = () => {
 };
 
 const AutContext = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(true);
+  const [currentUser, setCurrentUser] = useState(false);
+
+  useEffect(() => {
+    // setCurrentUser(JSON.parse(sessionStorage.getItem('user')));
+    userObserver(setCurrentUser);
+  }, []);
+
   const values = { currentUser };
   return (
     <BooksContext.Provider value={values}>{children}</BooksContext.Provider>

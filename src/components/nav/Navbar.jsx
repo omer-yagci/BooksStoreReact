@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { UseBooksContext } from "../../context/AutContext";
+import { logOut } from "../../auth/firebase";
 
 const Navbar = () => {
   const { currentUser } = UseBooksContext();
@@ -16,10 +17,15 @@ const Navbar = () => {
           <div className="d-flex  align-items-center ">
             {currentUser ? (
               <>
-                <h5 className="mb-0 text-capitalize">
+                <h5 className="mb-0 text-capitalize" style={{ color: "white" }}>
                   {currentUser.displayName}
                 </h5>
-                <button className="ms-2 btn btn-outline-light">Logout</button>
+                <button
+                  className="ms-2 btn btn-outline-light"
+                  onClick={() => logOut()}
+                >
+                  Logout
+                </button>
               </>
             ) : (
               <>
