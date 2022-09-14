@@ -14,23 +14,16 @@ const Home = () => {
     getDataFromAPI();
     setValue(event.target.value);
   };
+  const GOOGLE_KEY = process.env.REACT_APP_GOOGLE_KEY;
+
+  const URL = `https://www.googleapis.com/books/v1/volumes?q=${value}&key=${GOOGLE_KEY}`;
 
   const getDataFromAPI = async () => {
     try {
-      const options = {
-        method: "GET",
-        url: `https://hapi-books.p.rapidapi.com/search/${value}`,
-        headers: {
-          "X-RapidAPI-Key": process.env.REACT_APP_HAPI_KEY,
-          "X-RapidAPI-Host": process.env.REACT_APP_API_HOST,
-        },
-      };
-
-      await axios.request(options).then(function (response) {
-        setBooksDatas(response.data);
-      });
+      const { data } = await axios.get(URL);
+      setBooksDatas(data);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
