@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -95,5 +96,16 @@ export const signUpProvider = (navigate) => {
     .catch((error) => {
       // Handle Errors here.
       console.log(error);
+    });
+};
+
+export const forgotPassword = (email) => {
+  //? Email yoluyla şifre sıfırlama için kullanılan firebase metodu
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      console.log("Please check your mail box!");
+    })
+    .catch((err) => {
+      console.log(err);
     });
 };
