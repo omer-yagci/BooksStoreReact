@@ -51,3 +51,15 @@ label {
 }
 
 /*REGİSTER PAGE END */
+
+/* Login Page START */
+.google-btn {
+  padding: 0.3rem;
+  background-color: lightblue;
+  color: black;
+}
+.google-icon {
+  margin: 0 0.2rem;
+  font-size: 2rem;
+}
+/* Login Page END */
