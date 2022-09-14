@@ -1,10 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Register from "../pages/register/Register";
+import Login from "../pages/login/Login";
+import { UseBooksContext } from "../context/AutContext";
 
 const PrivateRouter = () => {
-  const user = true;
-  return user ? <Outlet /> : <Register />;
+  const { currentUser } = UseBooksContext();
+
+  return currentUser ? <Outlet /> : <Login />;
 };
 
 export default PrivateRouter;
