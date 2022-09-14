@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import registerImage from "../../assests/registerImage.jpg";
 import bookIcon from "../../assests/booksIconpng.png";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { signIn } from "../../auth/firebase";
 
 const Login = () => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    signIn(email, password, navigate);
+  };
   return (
     <section className="vh-100">
       <div className="container-fluid">
@@ -18,7 +28,7 @@ const Login = () => {
               </span>
             </div>
             <div className="d-flex justify-content-center align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-              <form style={{ width: "23rem" }}>
+              <form style={{ width: "23rem" }} onSubmit={handleLogin}>
                 <h3
                   className="fw-normal mb-3 pb-3"
                   style={{ letterSpacing: 1 }}
@@ -32,6 +42,7 @@ const Login = () => {
                     name="email"
                     className="form-control form-control-lg"
                     placeholder="Email..."
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div className="form-outline mb-4">
@@ -41,12 +52,13 @@ const Login = () => {
                     name="password"
                     className="form-control form-control-lg"
                     placeholder="Password..."
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
                 <div className="pt-1 mb-4">
                   <button
                     className="btn btn-info btn-lg btn-block"
-                    type="button"
+                    type="submit"
                   >
                     Login
                   </button>

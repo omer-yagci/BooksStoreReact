@@ -1,13 +1,28 @@
-import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createUser } from "../../auth/firebase";
 
 const Register = () => {
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const navigate = useNavigate();
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    const displayName = `${firstName} ${lastName}`;
+    console.log(firstName, lastName);
+    createUser(email, password, navigate, displayName);
+  };
+
   return (
     <div className="register-container">
       <div className="register-wrapper">
         <div className="d-flex justify-content-center">
           <div className="register-form">
             <h1 className="form-title display-3 ">JOİN US</h1>
-            <form id="register">
+            <form id="register" onSubmit={formSubmitHandler}>
               <div className="colm mb-3">
                 <label htmlFor="firstName" className="form-label">
                   First Name
@@ -18,6 +33,7 @@ const Register = () => {
                   id="firstName"
                   placeholder="Enter your first name.."
                   required
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
               <div className="colm mb-3">
@@ -30,6 +46,7 @@ const Register = () => {
                   id="lastName"
                   placeholder="Enter your last name.."
                   required
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
               <div className="colm mb-3">
@@ -42,6 +59,7 @@ const Register = () => {
                   id="email"
                   placeholder="Enter your email adress.."
                   required
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="colm mb-3">
@@ -54,6 +72,7 @@ const Register = () => {
                   id="password"
                   placeholder="Enter your password.."
                   required
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <input
