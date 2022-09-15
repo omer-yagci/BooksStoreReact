@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import homeStyles from "../home/home.module.scss";
 import axios from "axios";
+import BooksCard from "../../components/bookscard/BooksCard";
+
 const Home = () => {
   const [value, setValue] = useState("");
   const [booksDatas, setBooksDatas] = useState([]);
@@ -27,7 +29,6 @@ const Home = () => {
     }
   };
 
-  console.log(booksDatas);
   return (
     <>
       <form
@@ -41,6 +42,11 @@ const Home = () => {
         />
         <button className={homeStyles.btn}>Search</button>
       </form>
+      <main className={homeStyles.main}>
+        {booksDatas?.items?.map((booksData) => {
+          return <BooksCard key={booksData.id} booksData={booksData} />;
+        })}
+      </main>
     </>
   );
 };
