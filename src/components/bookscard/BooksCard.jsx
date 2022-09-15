@@ -1,10 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import booksCardStyles from "../bookscard/bookscard.module.scss";
 import defaultImage from "../../assests/default.jpg";
 
 const BooksCard = ({ booksData }) => {
   // console.log(booksData);
+  const navigate = useNavigate();
+
+  const clickHandler = () => {
+    navigate("/details", { state: booksData });
+  };
   const {
     volumeInfo: {
       title,
@@ -13,7 +19,7 @@ const BooksCard = ({ booksData }) => {
   } = booksData;
   return (
     <>
-      <div className={booksCardStyles.card}>
+      <div onClick={clickHandler} className={booksCardStyles.card}>
         <h3>{title} </h3>
         <div className={booksCardStyles.images}>
           <img src={thumbnail ? thumbnail : defaultImage} alt={title} />
