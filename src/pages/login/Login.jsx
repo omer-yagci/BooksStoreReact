@@ -36,7 +36,7 @@ const Login = () => {
           >
             <div className="px-5 ms-xl-4">
               <span className="h1 fw-bold mb-0">
-                <img style={{ width: "10rem" }} src={bookIcon} alt="ıcon" />
+                <img style={{ width: "8rem" }} src={bookIcon} alt="ıcon" />
               </span>
             </div>
             <div className="d-flex justify-content-center align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
