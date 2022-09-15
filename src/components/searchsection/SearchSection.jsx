@@ -5,7 +5,6 @@ import searchStyles from "../searchsection/search.module.scss";
 const SearchSection = ({ setValue, getDataFromAPI }) => {
   const inputChangeHandler = (event) => {
     setValue(event.target.value);
-    console.log("zaaaa");
   };
   const formSubmitHandler = (event) => {
     event.preventDefault();

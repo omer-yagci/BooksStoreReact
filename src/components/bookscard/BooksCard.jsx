@@ -4,13 +4,12 @@ import booksCardStyles from "../bookscard/bookscard.module.scss";
 import defaultImage from "../../assests/default.jpg";
 
 const BooksCard = ({ booksData }) => {
-  console.log(booksData);
+  // console.log(booksData);
   const {
     volumeInfo: {
       title,
       imageLinks: { thumbnail },
     },
-    saleInfo: { saleability },
   } = booksData;
   return (
     <>
@@ -19,7 +18,6 @@ const BooksCard = ({ booksData }) => {
         <div className={booksCardStyles.images}>
           <img src={thumbnail ? thumbnail : defaultImage} alt={title} />
         </div>
-        <p>{saleability}</p>
       </div>
     </>
   );
