@@ -7,8 +7,9 @@ const BooksDetail = () => {
   // Get data with using useLocation func.
 
   const booksData = location.state;
-  console.log(booksData);
-
+  // console.log(booksData);
+  // const { id } = booksData;
+  // console.log(id);
   return <div>BooksDetail</div>;
 };
 
