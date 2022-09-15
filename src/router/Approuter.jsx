@@ -21,7 +21,7 @@ const Approuter = () => {
         <Route path="/login" element={<Login />} />
 
         {/* Private Router */}
-        <Route path="/details" element={<PrivateRouter />}>
+        <Route path="/detail" element={<PrivateRouter />}>
           <Route path="" element={<BooksDetail />} />
         </Route>
 

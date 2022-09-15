@@ -9,7 +9,7 @@ const BooksCard = ({ booksData }) => {
   const navigate = useNavigate();
 
   const clickHandler = () => {
-    navigate("/details", { state: booksData });
+    navigate("/detail", { state: booksData });
   };
   const {
     volumeInfo: {
