@@ -10,6 +10,7 @@ const BooksCard = ({ booksData }) => {
       title,
       imageLinks: { thumbnail },
     },
+    saleInfo: { saleability },
   } = booksData;
   return (
     <>
@@ -18,6 +19,7 @@ const BooksCard = ({ booksData }) => {
         <div className={booksCardStyles.images}>
           <img src={thumbnail ? thumbnail : defaultImage} alt={title} />
         </div>
+        <p>{saleability}</p>
       </div>
     </>
   );
