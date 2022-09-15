@@ -8,7 +8,6 @@ const BooksCard = ({ booksData }) => {
   const {
     volumeInfo: {
       title,
-
       imageLinks: { thumbnail },
     },
   } = booksData;
@@ -19,7 +18,6 @@ const BooksCard = ({ booksData }) => {
         <div className={booksCardStyles.images}>
           <img src={thumbnail ? thumbnail : defaultImage} alt={title} />
         </div>
-        <button className={booksCardStyles.btn}>More Info</button>
       </div>
     </>
   );

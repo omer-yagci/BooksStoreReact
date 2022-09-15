@@ -1,31 +1,3 @@
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f6f5f4;
-
-  .input,
-  .btn {
-    font-size: 1.5rem;
-    margin: 0.5rem 0;
-    border: none;
-    border-radius: 0.3rem;
-  }
-  .input {
-    background-color: lightblue;
-  }
-  .input:focus {
-    outline: none;
-  }
-  .btn {
-    border: 1px solid black;
-    cursor: pointer;
-    &:hover {
-      color: white;
-      background-color: black;
-    }
-  }
-}
 .main {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
