@@ -5,7 +5,6 @@ import booksCardStyles from "../bookscard/bookscard.module.scss";
 import defaultImage from "../../assests/default.jpg";
 
 const BooksCard = ({ booksData }) => {
-  // console.log(booksData);
   const navigate = useNavigate();
 
   const clickHandler = () => {

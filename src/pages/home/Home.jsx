@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import homeStyles from "../home/home.module.scss";
 import axios from "axios";
 import BooksCard from "../../components/bookscard/BooksCard";
@@ -12,6 +12,10 @@ const Home = () => {
 
   const URL = `https://www.googleapis.com/books/v1/volumes?q=${value}&key=${GOOGLE_KEY}`;
 
+  // useEffect(() => {
+  //   getDataFromAPI();
+  // }, []);
+
   const getDataFromAPI = async () => {
     try {
       const { data } = await axios.get(URL);
@@ -20,6 +24,9 @@ const Home = () => {
       console.log(error);
     }
   };
+  useEffect(() => {
+    getDataFromAPI();
+  }, []);
 
   return (
     <>

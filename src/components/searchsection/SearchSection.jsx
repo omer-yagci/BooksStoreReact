@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import searchStyles from "../searchsection/search.module.scss";
 
@@ -6,6 +7,7 @@ const SearchSection = ({ setValue, getDataFromAPI }) => {
   const inputChangeHandler = (event) => {
     setValue(event.target.value);
   };
+
   const formSubmitHandler = (event) => {
     event.preventDefault();
     getDataFromAPI();
