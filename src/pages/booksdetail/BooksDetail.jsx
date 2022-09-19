@@ -19,7 +19,11 @@ const BooksDetail = () => {
       epub: { isAvailable, acsTokenLink },
       pdf: { isAvailable: pdfAvailable, acsTokenLink: pdfTokenLink },
     },
-    saleInfo: { saleability },
+    saleInfo: {
+      saleability,
+      buyLink,
+      listPrice: { amount, currencyCode },
+    },
     volumeInfo: {
       authors,
       categories,
@@ -36,7 +40,7 @@ const BooksDetail = () => {
     <div className={detailsStyles.wrapper}>
       <div className="container py-5 ">
         <h1 className="text-center">{title}</h1>
-        <h4 className="text-center">{saleability}</h4>
+        <h4 className="text-center">{`${saleability} ${amount} ${currencyCode}`}</h4>
 
         <div className="col-md-4">
           <img
@@ -44,27 +48,7 @@ const BooksDetail = () => {
             className={detailsStyles.img}
             alt="icon"
           />
-          <div className="card-body">
-            <h5 className="card-title">Description</h5>
-            <p className="card-text">
-              {description ? (
-                <>
-                  {readMore
-                    ? description
-                    : `${description.substring(0, 100)}... `}
 
-                  <button
-                    className={detailsStyles.btn}
-                    onClick={() => setReadMore(!readMore)}
-                  >
-                    {readMore ? " Hide" : " read more"}
-                  </button>
-                </>
-              ) : (
-                "no description! "
-              )}
-            </p>
-          </div>
           <p>
             {isAvailable && acsTokenLink ? (
               <a rel="noreferrer" target={"_blank"} href={acsTokenLink}>
@@ -92,8 +76,37 @@ const BooksDetail = () => {
               "💥 Unable to Online Read data"
             )}
           </p>
+          <p>
+            {buyLink ? (
+              <a rel="noreferrer" target={"_blank"} href={buyLink}>
+                Google play Buy
+              </a>
+            ) : (
+              "💥 Unable to Link"
+            )}
+          </p>
         </div>
+        <div className="card-body">
+          <h5 className="card-title">Description</h5>
+          <p className="card-text">
+            {description ? (
+              <>
+                {readMore
+                  ? description
+                  : `${description.substring(0, 150)}... `}
 
+                <button
+                  className={detailsStyles.btn}
+                  onClick={() => setReadMore(!readMore)}
+                >
+                  {readMore ? " Hide" : " read more"}
+                </button>
+              </>
+            ) : (
+              "no description! "
+            )}
+          </p>
+        </div>
         <div className="col-md-8 d-flex flex-column">
           <ul className="list-group ">
             <li className="list-group-item">
