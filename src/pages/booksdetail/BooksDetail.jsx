@@ -11,9 +11,10 @@ const BooksDetail = () => {
   // Get data with using useLocation func.
 
   const booksData = location.state;
+  // console.log(booksData);
 
-  console.log(booksData);
   const {
+    searchInfo: { textSnippet },
     accessInfo: {
       webReaderLink,
       epub: { isAvailable, acsTokenLink },
@@ -49,7 +50,7 @@ const BooksDetail = () => {
           <ModalImage
             small={thumbnail ? thumbnail : defaultImage}
             large={thumbnail ? thumbnail : defaultImage}
-            alt={title}
+            alt={textSnippet}
           />
           <p>
             {isAvailable && acsTokenLink ? (
