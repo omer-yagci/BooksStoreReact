@@ -42,15 +42,18 @@ const BooksDetail = () => {
     <div className={detailsStyles.wrapper}>
       <div className="container py-5 ">
         <h1 className="text-center">{title}</h1>
-        <h4 className="text-center">{`${saleability} ${amount ? amount : "0"} ${
-          currencyCode ? currencyCode : "TRY"
-        }`}</h4>
+        <h4 className="text-center">
+          {amount &&
+            `${saleability} ${amount ? amount : "Agaya Beleş"} ${
+              currencyCode ? currencyCode : "TRY"
+            }`}
+        </h4>
 
         <div className="col-md-4">
           <ModalImage
             small={thumbnail ? thumbnail : defaultImage}
             large={thumbnail ? thumbnail : defaultImage}
-            alt={textSnippet}
+            alt={textSnippet ? textSnippet : title}
           />
           <p>
             {isAvailable && acsTokenLink ? (
