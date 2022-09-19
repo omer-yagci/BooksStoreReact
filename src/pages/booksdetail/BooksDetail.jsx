@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import defaultImage from "../../assests/default.jpg";
 import { Link } from "react-router-dom";
 import detailsStyles from "../booksdetail/details.module.scss";
-
+import ModalImage from "react-modal-image";
 const BooksDetail = () => {
   const location = useLocation();
   const [readMore, setReadMore] = useState(false);
@@ -36,19 +36,21 @@ const BooksDetail = () => {
       pageCount,
     },
   } = booksData;
+
   return (
     <div className={detailsStyles.wrapper}>
       <div className="container py-5 ">
         <h1 className="text-center">{title}</h1>
-        <h4 className="text-center">{`${saleability} ${amount} ${currencyCode}`}</h4>
+        <h4 className="text-center">{`${saleability} ${amount ? amount : "0"} ${
+          currencyCode ? currencyCode : "TRY"
+        }`}</h4>
 
         <div className="col-md-4">
-          <img
-            src={thumbnail ? thumbnail : defaultImage}
-            className={detailsStyles.img}
-            alt="icon"
+          <ModalImage
+            small={thumbnail ? thumbnail : defaultImage}
+            large={thumbnail ? thumbnail : defaultImage}
+            alt={title}
           />
-
           <p>
             {isAvailable && acsTokenLink ? (
               <a rel="noreferrer" target={"_blank"} href={acsTokenLink}>
