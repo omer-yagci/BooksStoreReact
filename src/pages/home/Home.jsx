@@ -3,6 +3,7 @@ import homeStyles from "../home/home.module.scss";
 import axios from "axios";
 import BooksCard from "../../components/bookscard/BooksCard";
 import SearchSection from "../../components/searchsection/SearchSection";
+import { useEffect } from "react";
 
 const Home = () => {
   const [value, setValue] = useState("");
@@ -20,6 +21,7 @@ const Home = () => {
       console.log(error);
     }
   };
+  useEffect(() => {}, [value]);
 
   return (
     <>

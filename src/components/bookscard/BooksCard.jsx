@@ -16,6 +16,7 @@ const BooksCard = ({ booksData }) => {
       imageLinks: { thumbnail },
     },
   } = booksData;
+
   return (
     <>
       <div onClick={clickHandler} className={booksCardStyles.card}>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import searchStyles from "../searchsection/search.module.scss";
 
@@ -12,6 +13,7 @@ const SearchSection = ({ setValue, getDataFromAPI }) => {
     getDataFromAPI();
     setValue(event.target.value);
   };
+
   return (
     <div className={searchStyles.wrapper}>
       <form
