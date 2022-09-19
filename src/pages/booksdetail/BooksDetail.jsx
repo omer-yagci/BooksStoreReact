@@ -15,6 +15,7 @@ const BooksDetail = () => {
   console.log(booksData);
   const {
     accessInfo: {
+      webReaderLink,
       epub: { isAvailable, acsTokenLink },
       pdf: { isAvailable: pdfAvailable, acsTokenLink: pdfTokenLink },
     },
@@ -32,20 +33,41 @@ const BooksDetail = () => {
     },
   } = booksData;
   return (
-    <div>
-      <div className="container py-5">
+    <div className={detailsStyles.wrapper}>
+      <div className="container py-5 ">
         <h1 className="text-center">{title}</h1>
         <h4 className="text-center">{saleability}</h4>
 
-        <div className="col-md-4 ">
+        <div className="col-md-4">
           <img
             src={thumbnail ? thumbnail : defaultImage}
             className={detailsStyles.img}
             alt="icon"
           />
+          <div className="card-body">
+            <h5 className="card-title">Description</h5>
+            <p className="card-text">
+              {description ? (
+                <>
+                  {readMore
+                    ? description
+                    : `${description.substring(0, 100)}... `}
+
+                  <button
+                    className={detailsStyles.btn}
+                    onClick={() => setReadMore(!readMore)}
+                  >
+                    {readMore ? " Hide" : " read more"}
+                  </button>
+                </>
+              ) : (
+                "no description! "
+              )}
+            </p>
+          </div>
           <p>
-            {isAvailable ? (
-              <a target={"_blank"} href={acsTokenLink}>
+            {isAvailable && acsTokenLink ? (
+              <a rel="noreferrer" target={"_blank"} href={acsTokenLink}>
                 Download Epub
               </a>
             ) : (
@@ -53,62 +75,52 @@ const BooksDetail = () => {
             )}
           </p>
           <p>
-            {pdfAvailable ? (
-              <a target={"_blank"} href={pdfTokenLink}>
+            {pdfAvailable && pdfTokenLink ? (
+              <a rel="noreferrer" target={"_blank"} href={pdfTokenLink}>
                 Download Pdf
               </a>
             ) : (
               "💥 Unable to download pdf"
             )}
           </p>
-        </div>
-        <div className="card-body">
-          <h5 className="card-title">Description</h5>
-          <p className="card-text">
-            {readMore ? description : `${description.substring(0, 100)}... `}
-
-            <button
-              className={detailsStyles.btn}
-              onClick={() => setReadMore(!readMore)}
-            >
-              {readMore ? " show less" : " read more"}
-            </button>
+          <p>
+            {webReaderLink ? (
+              <a rel="noreferrer" target={"_blank"} href={webReaderLink}>
+                Read Online
+              </a>
+            ) : (
+              "💥 Unable to Online Read data"
+            )}
           </p>
         </div>
-        <div className="card mb-3">
-          <div className="row g-0">
-            <div className="col-md-8 d-flex flex-column ">
-              <ul className="list-group ">
-                <li className="list-group-item">
-                  {"PublishedDate : " + publishedDate}
-                </li>
-                <li className="list-group-item">{"Page : " + pageCount}</li>
-                <li className="list-group-item">{"Language : " + language}</li>
-                <li className="list-group-item">{"Authors : " + authors}</li>
-                <li className="list-group-item">
-                  {"Categories : " + categories}
-                </li>
 
-                <li className="list-group-item">
-                  <p>
-                    For Google Books Link
-                    {onlineLink ? (
-                      <a target={"_blank"} href={onlineLink}>
-                        Click Here
-                      </a>
-                    ) : (
-                      "💥 Unable link to GoogleBooks"
-                    )}
-                  </p>
-                </li>
-                <li className="list-group-item">
-                  <Link to={-1} className="card-link">
-                    Go Back
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div className="col-md-8 d-flex flex-column">
+          <ul className="list-group ">
+            <li className="list-group-item">
+              {"PublishedDate : " + publishedDate}
+            </li>
+            <li className="list-group-item">{"Page : " + pageCount}</li>
+            <li className="list-group-item">{"Language : " + language}</li>
+            <li className="list-group-item">{"Authors : " + authors}</li>
+            <li className="list-group-item">{"Categories : " + categories}</li>
+            <li className="list-group-item">
+              <p>
+                For Google Books Link
+                {onlineLink ? (
+                  <a rel="noreferrer" target={"_blank"} href={onlineLink}>
+                    Click Here
+                  </a>
+                ) : (
+                  "💥 Unable link to GoogleBooks"
+                )}
+              </p>
+            </li>
+            <li className="list-group-item">
+              <Link to={-1} className="card-link">
+                Go Back
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
