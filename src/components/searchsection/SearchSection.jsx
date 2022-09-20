@@ -1,17 +1,25 @@
 import React from "react";
-import { useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import searchStyles from "../searchsection/search.module.scss";
+import { UseBooksContext } from "../../context/AutContext";
+import { toastWarnNotify } from "../../helpers/ToastNotify";
 
-const SearchSection = ({ setValue, getDataFromAPI }) => {
+const SearchSection = ({ setValue, getDataFromAPI, SEARCH_URL, value }) => {
+  const { currentUser } = UseBooksContext();
   const inputChangeHandler = (event) => {
     setValue(event.target.value);
   };
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    getDataFromAPI();
-    setValue(event.target.value);
+    if (value && currentUser) {
+      getDataFromAPI(SEARCH_URL);
+      setValue(event.target.value);
+    } else if (!currentUser) {
+      toastWarnNotify("Please log in to search book");
+    } else {
+      toastWarnNotify("Enter a text");
+    }
   };
 
   return (

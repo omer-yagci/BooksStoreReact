@@ -11,21 +11,30 @@ const Home = () => {
 
   const GOOGLE_KEY = process.env.REACT_APP_GOOGLE_KEY;
 
-  const URL = `https://www.googleapis.com/books/v1/volumes?q=${value}&key=${GOOGLE_KEY}`;
+  const URL = `https://www.googleapis.com/books/v1/volumes?q=html&key=${GOOGLE_KEY}`;
 
-  const getDataFromAPI = async () => {
+  const SEARCH_URL = `https://www.googleapis.com/books/v1/volumes?q=${value}&key=${GOOGLE_KEY}`;
+
+  const getDataFromAPI = async (url) => {
     try {
-      const { data } = await axios.get(URL);
+      const { data } = await axios.get(url);
       setBooksDatas(data);
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(() => {}, [value]);
+  useEffect(() => {
+    getDataFromAPI(URL);
+  }, []);
 
   return (
     <>
-      <SearchSection setValue={setValue} getDataFromAPI={getDataFromAPI} />
+      <SearchSection
+        setValue={setValue}
+        getDataFromAPI={getDataFromAPI}
+        SEARCH_URL={SEARCH_URL}
+        value={value}
+      />
       <main className={homeStyles.main}>
         {booksDatas?.items?.map((booksData) => {
           return <BooksCard key={booksData.id} booksData={booksData} />;
