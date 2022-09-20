@@ -1,20 +1,26 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import defaultImage from "../../assests/default.jpg";
 import { Link } from "react-router-dom";
 import detailsStyles from "../booksdetail/details.module.scss";
-import ModalImage from "react-modal-image";
+
+//! For Second Modal Window
+// !import defaultImage from "../../assests/default.jpg";
+// !import ModalImage from "react-modal-image";
+
+import { SweetAlertsModal } from "../../helpers/SweetAlerts";
+
 const BooksDetail = () => {
   const location = useLocation();
   const [readMore, setReadMore] = useState(false);
 
-  // Get data with using useLocation func.
+  // !Get data with using useLocation func.
 
   const booksData = location.state;
-  // console.log(booksData);
+
+  //TODO console.log(booksData);
 
   const {
-    searchInfo: { textSnippet },
+    //! searchInfo: { textSnippet },
     accessInfo: {
       webReaderLink,
       epub: { isAvailable, acsTokenLink },
@@ -42,18 +48,23 @@ const BooksDetail = () => {
     <div className={detailsStyles.wrapper}>
       <div className="container py-5 ">
         <h1 className="text-center">{title}</h1>
-        <h4 className="text-center">
-          {amount &&
-            `${saleability} ${amount ? amount : "Agaya Beleş"} ${
-              currencyCode ? currencyCode : "TRY"
-            }`}
-        </h4>
+        <h4 className="text-center">{saleability}</h4>
 
         <div className="col-md-4">
-          <ModalImage
+          {/* Second Modal Window For İMAGE */}
+
+          {/* <ModalImage
             small={thumbnail ? thumbnail : defaultImage}
             large={thumbnail ? thumbnail : defaultImage}
             alt={textSnippet ? textSnippet : title}
+          /> */}
+
+          <img
+            src={thumbnail}
+            alt={title}
+            onClick={() =>
+              SweetAlertsModal(thumbnail, title, amount, currencyCode)
+            }
           />
           <p>
             {isAvailable && acsTokenLink ? (
