@@ -1,5 +1,6 @@
 import AutContext from "./context/AutContext";
 import Approuter from "./router/Approuter";
+import { ToastContainer } from "react-toastify";
 import "./scss/App.scss";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <AutContext>
         <Approuter />
+        <ToastContainer />
       </AutContext>
     </div>
   );
