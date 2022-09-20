@@ -28,8 +28,8 @@ export const SweetAlertsModal = (img, title, amount, currencyCode) => {
     title: title,
     text: amount + currencyCode,
     imageUrl: img,
-    imageWidth: 400,
-    imageHeight: 300,
+    imageWidth: 200,
+    imageHeight: 200,
   });
 };
 
