@@ -10,6 +10,12 @@ import {
   updateProfile,
   sendPasswordResetEmail,
 } from "firebase/auth";
+import {
+  SweetAlertsError,
+  SweetAlertsLogin,
+  SweetAlertsRegister,
+  SweetAlertsLogOut,
+} from "../helpers/SweetAlerts";
 
 // TODO: Replace the following with your app's Firebase project configuration
 //* https://firebase.google.com/docs/auth/web/start
@@ -42,10 +48,11 @@ export const createUser = async (email, password, navigate, displayName) => {
     await updateProfile(auth.currentUser, {
       displayName: displayName,
     });
+    SweetAlertsRegister();
     navigate("/");
     console.log(userCredential);
   } catch (error) {
-    console.log(error);
+    SweetAlertsError(error);
   }
 };
 
@@ -57,9 +64,10 @@ export const signIn = async (email, password, navigate) => {
       password
     );
     navigate("/");
+    SweetAlertsLogin();
     console.log(userCredential);
   } catch (error) {
-    console.log(error);
+    SweetAlertsError(error);
   }
 };
 
@@ -92,6 +100,7 @@ export const signUpProvider = (navigate) => {
     .then((result) => {
       console.log(result);
       navigate("/");
+      SweetAlertsLogOut();
     })
     .catch((error) => {
       // Handle Errors here.
