@@ -6,7 +6,7 @@ import SearchSection from "../../components/searchsection/SearchSection";
 import { useEffect } from "react";
 
 const Home = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("html");
   const [booksDatas, setBooksDatas] = useState([]);
 
   const GOOGLE_KEY = process.env.REACT_APP_GOOGLE_KEY;
@@ -23,9 +23,6 @@ const Home = () => {
       console.log(error);
     }
   };
-  useEffect(() => {
-    getDataFromAPI(URL);
-  }, []);
 
   return (
     <>

@@ -14,7 +14,7 @@ const SearchSection = ({ setValue, getDataFromAPI, SEARCH_URL, value }) => {
     event.preventDefault();
     if (value && currentUser) {
       getDataFromAPI(SEARCH_URL);
-      setValue(event.target.value);
+      setValue(value);
     } else if (!currentUser) {
       toastWarnNotify("Please log in to search book");
     } else {

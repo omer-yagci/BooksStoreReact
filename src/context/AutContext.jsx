@@ -11,6 +11,7 @@ export const UseBooksContext = () => {
 
 const AutContext = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(false);
+  // const [displayName, setDisplayName] = useState("");
 
   useEffect(() => {
     // setCurrentUser(JSON.parse(sessionStorage.getItem('user')));

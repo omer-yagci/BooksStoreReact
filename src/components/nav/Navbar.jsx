@@ -14,12 +14,10 @@ const Navbar = () => {
             <h4>BookStoreApp</h4>
           </Link>
 
-          <div className="d-flex  align-items-center ">
+          <div className="d-flex align-items-center ">
             {currentUser ? (
               <>
-                <h5 className="mb-0 text-capitalize" style={{ color: "white" }}>
-                  {currentUser.displayName}
-                </h5>
+                <h5 style={{ color: "white" }}>{currentUser.displayName}</h5>
                 <button
                   className="ms-2 btn btn-outline-light"
                   onClick={() => logOut()}
