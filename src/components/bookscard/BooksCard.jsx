@@ -14,7 +14,7 @@ const BooksCard = ({ booksData }) => {
   const {
     volumeInfo: {
       title,
-      imageLinks: { thumbnail },
+      // imageLinks: { thumbnail, smallThumbnail },
     },
   } = booksData;
 
@@ -23,7 +23,13 @@ const BooksCard = ({ booksData }) => {
       <div onClick={clickHandler} className={booksCardStyles.card}>
         <h3>{title} </h3>
         <div className={booksCardStyles.images}>
-          <img src={thumbnail ? thumbnail : defaultImage} alt={title} />
+          {title ? (
+            <>{/* <img src={thumbnail} alt={title} /> */}p</>
+          ) : (
+            <>
+              <img src={defaultImage} alt={title} />
+            </>
+          )}
         </div>
       </div>
     </>
