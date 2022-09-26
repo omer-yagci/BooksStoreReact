@@ -11,24 +11,26 @@ const BooksCard = ({ booksData }) => {
   const clickHandler = () => {
     navigate("/detail", { state: booksData });
   };
-  const {
-    volumeInfo: {
-      title,
-      // imageLinks: { thumbnail, smallThumbnail },
-    },
-  } = booksData;
+  const { volumeInfo } = booksData;
 
   return (
     <>
       <div onClick={clickHandler} className={booksCardStyles.card}>
-        <h3>{title} </h3>
+        <h3>{volumeInfo.title} </h3>
         <div className={booksCardStyles.images}>
-          {title ? (
-            <>{/* <img src={thumbnail} alt={title} /> */}p</>
-          ) : (
+          {volumeInfo.title ? (
             <>
-              <img src={defaultImage} alt={title} />
+              <img
+                src={
+                  volumeInfo.imageLinks.smallThumbnail
+                    ? volumeInfo.imageLinks.smallThumbnail
+                    : defaultImage
+                }
+                alt={volumeInfo.title}
+              />
             </>
+          ) : (
+            <>{<img src={defaultImage} alt={volumeInfo.title} />}</>
           )}
         </div>
       </div>
