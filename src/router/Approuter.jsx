@@ -4,6 +4,7 @@ import BooksDetail from "../pages/booksdetail/BooksDetail";
 import Contact from "../pages/contact/Contact";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
+import NotFound from "../pages/notfound/NotFound";
 import Register from "../pages/register/Register";
 import PrivateRouter from "./PrivateRouter";
 
@@ -23,6 +24,7 @@ const Approuter = () => {
         </Route>
 
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
