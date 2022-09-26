@@ -11,14 +11,14 @@ export const UseBooksContext = () => {
 
 const AutContext = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(false);
-  // const [displayName, setDisplayName] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     // setCurrentUser(JSON.parse(sessionStorage.getItem('user')));
     userObserver(setCurrentUser);
   }, []);
 
-  const values = { currentUser };
+  const values = { currentUser, isLoggedIn, setIsLoggedIn };
   return (
     <BooksContext.Provider value={values}>{children}</BooksContext.Provider>
   );
