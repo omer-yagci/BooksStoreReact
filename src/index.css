@@ -63,3 +63,8 @@ label {
   font-size: 2rem;
 }
 /* Login Page END */
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
