@@ -15,15 +15,15 @@ const Approuter = () => {
       <Routes>
         <Route path="" element={<Home />} />
 
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
 
         {/* Private Router */}
-        <Route path="/detail" element={<PrivateRouter />}>
+        <Route path="detail" element={<PrivateRouter />}>
           <Route path="" element={<BooksDetail />} />
         </Route>
 
-        <Route path="/contact" element={<Contact />} />
+        <Route path="contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
