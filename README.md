@@ -3,8 +3,14 @@
 ## Description
 
 Project aims to create a Book Store App with React,React-Router.  
+
+![Form](book-store.gif)
                           [Live link](https://books-store-react-firebase-omer-yagci.vercel.app/)
-                                                 ![Form](book-store.gif)
+                       
+                       
+                          
+                          
+                                              
 
 ## What I used;
 
