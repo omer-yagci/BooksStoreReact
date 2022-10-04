@@ -5,11 +5,13 @@ import BooksCard from "../../components/bookscard/BooksCard";
 import SearchSection from "../../components/searchsection/SearchSection";
 
 const Home = () => {
-  const [value, setValue] = useState("html");
+  const [value, setValue] = useState("");
   const [booksDatas, setBooksDatas] = useState([]);
+  // const [loading, setLoading] = useState(false);
+
   const GOOGLE_KEY = process.env.REACT_APP_GOOGLE_KEY;
 
-  const URL = `https://www.googleapis.com/books/v1/volumes?q=${value}&key=${GOOGLE_KEY}`;
+  const URL = `https://www.googleapis.com/books/v1/volumes?q=react&key=${GOOGLE_KEY}`;
 
   const SEARCH_URL = `https://www.googleapis.com/books/v1/volumes?q=${value}&key=${GOOGLE_KEY}`;
 
@@ -23,7 +25,7 @@ const Home = () => {
   };
   useEffect(() => {
     getDataFromAPI(URL);
-  }, []);
+  }, [URL]);
   return (
     <>
       <SearchSection
@@ -34,7 +36,20 @@ const Home = () => {
       />
       <main className={homeStyles.main}>
         {booksDatas?.items?.map((booksData) => {
-          return <BooksCard key={booksData.id} booksData={booksData} />;
+          let thumbnail =
+            booksData.volumeInfo.imageLinks &&
+            booksData.volumeInfo.imageLinks.smallThumbnail;
+          let amount =
+            booksData.saleInfo.listPrice && booksData.saleInfo.listPrice.amount;
+          if (thumbnail !== undefined && amount !== undefined) {
+            return (
+              <BooksCard
+                key={booksData.id}
+                booksData={booksData}
+                value={value}
+              />
+            );
+          }
         })}
       </main>
     </>

@@ -7,7 +7,7 @@ import detailsStyles from "../booksdetail/details.module.scss";
 // !import defaultImage from "../../assests/default.jpg";
 // !import ModalImage from "react-modal-image";
 
-import { SweetAlertsModal } from "../../helpers/SweetAlerts";
+import { SweetAlertsModal, SweetAlertsModals } from "../../helpers/SweetAlerts";
 
 const BooksDetail = () => {
   const location = useLocation();
@@ -43,7 +43,7 @@ const BooksDetail = () => {
       pageCount,
     },
   } = booksData;
-
+  console.log(amount);
   return (
     <div className={detailsStyles.wrapper}>
       <div className="container py-5 ">
@@ -66,6 +66,7 @@ const BooksDetail = () => {
               SweetAlertsModal(thumbnail, title, amount, currencyCode)
             }
           />
+
           <p>
             {isAvailable && acsTokenLink ? (
               <a rel="noreferrer" target={"_blank"} href={acsTokenLink}>
