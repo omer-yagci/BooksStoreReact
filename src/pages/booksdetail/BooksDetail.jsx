@@ -7,7 +7,7 @@ import detailsStyles from "../booksdetail/details.module.scss";
 // !import defaultImage from "../../assests/default.jpg";
 // !import ModalImage from "react-modal-image";
 
-import { SweetAlertsModal, SweetAlertsModals } from "../../helpers/SweetAlerts";
+import { SweetAlertsModal } from "../../helpers/SweetAlerts";
 
 const BooksDetail = () => {
   const location = useLocation();
