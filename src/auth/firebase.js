@@ -76,6 +76,7 @@ export const userObserver = (setCurrentUser) => {
     } else {
       // User is signed out
       setCurrentUser(false);
+      SweetAlertsLogOut();
     }
   });
 };
