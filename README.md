@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+
 <!-- Please update value in the {}  -->
 
 <h1 align="center">BookStore App</h1>
@@ -72,42 +73,3 @@ $ git clone https://github.com/omer-yagci/BooksStoreReactFirebase.git
 
 - GitHub [omer-yagci](https://github.com/omer-yagci)
 - Linkedin [Ömer Kağan Yağcı](https://www.linkedin.com/in/omer-kagan-yagci/)
-=======
-# BooksStoreReactFirebase
-
-## Description
-
-Project aims to create a Book Store App with React,React-Router.  
-
-![Form](book-store.gif)
-                          [Live link](https://books-store-react-firebase-omer-yagci.vercel.app/)
-                       
-                       
-                          
-                          
-                                              
-
-## What I used;
-
-Bootstrap 5
-
-Components
-
-useState
-
-useEffect
-
-Firebase
-
-useNavigate
-
-Custom Hooks
-
-Props
-
-RestFull API
-
-useContext
-
-React-Spinner library
->>>>>>> ddf0f888eacef0b4a91f24f1145f3621f17899bd
