@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 <!-- Please update value in the {}  -->
 
 <h1 align="center">BookStore App</h1>
